@@ -1,7 +1,7 @@
 # Insert views here
 
 from ezLearn.app import app
-from ezLearn.app.databasing import db, account
+from ezLearn.app.models import db, account
 import random
 from flask import redirect, render_template, url_for, session, request, flash
 
