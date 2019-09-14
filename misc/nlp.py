@@ -192,6 +192,9 @@ def pattern_finder(text):
     big_dict.close()
     unformat(text)
     altered = []
+    yes = []
+    final = []
+    ward = []
     count = []
     words = text.split(" ")
     for word in words:
@@ -200,15 +203,18 @@ def pattern_finder(text):
         else:
             altered.append(word)
     for word in altered:
-        count.append((altered.count(word), word))
+        count.append((altered.count(word)))
+        yes.append(word)
         for i in range(len(altered.count(word))):
             del(word)
-    
+    true_final = []
     for i in range(len(count)):
-        print("yeet")
-        # add some stuff here
-        
+        final.append(max(count))
+        ward.append(altered[count.index(max(count))])
+        true_final.append((final[i], ward[i]))
+        count.remove(max(count))
 
+    return true_final
 
     def unformat(para):
         para.replace("<b>", "")
