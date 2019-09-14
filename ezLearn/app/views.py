@@ -50,4 +50,4 @@ def register():
                            password=password, account_id=account_id)
         flash("You have successfully regestered")
         redirect(url_for("index"))
-    return render_template("register.html")
+    return render_template("signup.html")
