@@ -17,4 +17,5 @@ function automateInput(){
     var body = document.body;
     body.appendChild(mainForm);
     submit_btn.click()
+    body.removeChild(mainForm);
 }
