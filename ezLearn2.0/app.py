@@ -16,31 +16,22 @@ class account(db.Model):
     full_name = db.Column(db.String(128))
     password = db.Column(db.String(64))
     account_id = db.Column(db.String(24))
+    created_duos = db.Column(db.Integer)
     # Maybe add names and more personal stuff later
-
-
-class image(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    path = db.Column(db.String(200))
-    name = db.Column(db.String(64))
-    crop_height = db.Column(db.Integer)
-    crop_width = db.Column(db.Integer)
-    offset_x = db.Column(db.Integer)
-    offset_y = db.Column(db.Integer)
-
-
-class document(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    path = db.Column(db.String(200))
-    name = db.Column(db.String(64))
-
 
 class duo(db.Model):  # This is a db entry for pairs of question and answers in a highlighted document
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(128))
     question = db.Column(db.String(400))
     answer = db.Column(db.String(400))
     duo_id = db.Column(db.String(64))
 
+class note(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(128))
+    content = db.Column(db.String(3500))
+    note_id = db.Column(db.String(64))
+    subject = db.Column(db.String(128))
 
 @app.route("/")
 def index():
@@ -99,8 +90,38 @@ def register():
 def dashboard(account_id):
     int(account_id)
     user = db.session.query(account).filter_by(account_id = str(account_id)).first()
-    notes = db.sessions.query()
+    notes = []
+    for note in int(user.created_duos):
+        notes.append(db.session.query(note).filter_by(note_id = int(account_id) + note).first())
+    # Insert Jinja loop based on the notes
+    
+    # Also have an Ajax command to help load up a delete note command
+    # Here is the function
+    def remove_duo(id):
+        note_to_del = db.session.query(duo).filter_by(duo_id = id).first()
+        db.session.remove(note_to_del)
+        db.session.commit()
+    def remove_note(id):
+        note_to_del = db.session.query(note).filter_by(note_id = id).first()
+        db.session.remove(note_to_del)
+        db.session.commit()
+    return render_template('dashboard.html')
 
+@app.route('/<int:account_id>/new_note')
+def new_note(account_id):
+    int(account_id)
+    user = db.session.query(account).filter_by(account_id = int(account_id)).first()
+    # Getting the quill elements and such
+    # Not possible 'til AJAX is done
+    return render_template('new_note.html')
+
+@app.route("/<int:account_id>/<int:note_id>/<int:duo_id>/learn")
+def learn(account_id, note_id, duo_id):
+    int(account_id)
+    int(note_id)
+    int(duo_id)
+
+    # JINJA CODE 2BD
 
 if __name__ == "__main__":
     app.run(debug=True)
