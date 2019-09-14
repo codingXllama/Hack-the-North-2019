@@ -2,6 +2,116 @@
 # It uses the cordial algorithm
 
 # Very basic NLP using simple ifs and elses
+import collections
+
+def return_starred(text, count):
+    if count > 1:
+        starred = []
+    words = text.split(" ")
+    for i in range(len(words)):
+        word = words[i]
+        if word.count("*") > 0:
+            word.replace("*", "")
+            if count == 1:
+                return word
+            else:
+                starred.append(word)
+    return starred
+            
+def return_bold(text):
+    # This will return an array of all bolded words
+    words = text.split(" ")
+    bolded = []
+    count = []
+    final = []
+    for i in range(len(words)):
+        word = words[i]
+        if word.count("<b>") > 1:
+            word.replace("<b>", "")
+            word.replace("</b>", "")
+            bolded.append(word)
+    
+    for item in bolded:
+        count.append((bolded.count(item), item))
+    
+    for i in range(len(count)):
+        min_val = min(count[i][0])
+        final.append(min_val[1])
+        count.remove(min_val)
+
+    return final
+
+def return_italics(text):
+    words = text.split(" ")
+    bolded = []
+    count = []
+    final = []
+    for i in range(len(words)):
+        word = words[i]
+        if word.count("<i>") > 1:
+            word.replace("<i>", "")
+            word.replace("</i>", "")
+            bolded.append(word)
+    
+    for item in bolded:
+        count.append((bolded.count(item), item))
+    
+    for i in range(len(count)):
+        min_val = min(count[i][0])
+        final.append(min_val[1])
+        count.remove(min_val)
+
+    return final
+
+def return_headers(text):
+    words = text.split(" ")
+    bolded = []
+    count = []
+    final = []
+    for i in range(len(words)):
+        word = words[i]
+        if word.count("<h") > 1:
+            word.replace("<h", "")
+            word.replace("</h", "")
+            word.replace("1>", "")
+            word.replace("2>", "")
+            word.replace("3>", "")
+            word.replace("4>", "")
+            word.replace("5>", "")
+            word.replace("6>", "")
+            bolded.append(word)
+    
+    for item in bolded:
+        count.append((bolded.count(item), item))
+    
+    for i in range(len(count)):
+        min_val = min(count[i][0])
+        final.append(min_val[1])
+        count.remove(min_val)
+
+    return final
+
+def return_headers(text):
+    words = text.split(" ")
+    bolded = []
+    count = []
+    final = []
+    for i in range(len(words)):
+        word = words[i]
+        if word.count("<mark>") > 1:
+            word.replace("<mark>", "")
+            word.replace("</mark>", "")
+            bolded.append(word)
+    
+    for item in bolded:
+        count.append((bolded.count(item), item))
+    
+    for i in range(len(count)):
+        min_val = min(count[i][0])
+        final.append(min_val[1])
+        count.remove(min_val)
+
+    return final
 
 
 def return_quest_punct(text):
@@ -75,3 +185,5 @@ def return_statement(text: str, question: str):
     for word in statement_sentance:
         statement = statement + " " + word
     return statement
+
+# Insert Pattern Finder Later
