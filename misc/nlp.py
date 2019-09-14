@@ -186,4 +186,44 @@ def return_statement(text: str, question: str):
         statement = statement + " " + word
     return statement
 
-# Insert Pattern Finder Later
+def pattern_finder(text):
+    big_dict = open("1-1000.txt", "r")
+    big_list = big_dict.split("/n")
+    big_dict.close()
+    unformat(text)
+    altered = []
+    count = []
+    words = text.split(" ")
+    for word in words:
+        if word in big_list:
+            del(word)
+        else:
+            altered.append(word)
+    for word in altered:
+        count.append((altered.count(word), word))
+        for i in range(len(altered.count(word))):
+            del(word)
+    
+    for i in range(len(count)):
+        print("yeet")
+        # add some stuff here
+        
+
+
+    def unformat(para):
+        para.replace("<b>", "")
+        para.replace("</b>", "")
+        para.replace("<i>", "")
+        para.replace("</i>", "")
+        para.replace("<mark>", "")
+        para.replace("</mark>", "")
+        para.replace("<h", "")
+        para.replace("</h", "")
+        para.replace("1>", "")
+        para.replace("2>", "")
+        para.replace("3>", "")
+        para.replace("4>", "")
+        para.replace("5>", "")
+        para.replace("6>", "")
+        para.replace("<em>", "")
+        para.replace("</em>", "")
