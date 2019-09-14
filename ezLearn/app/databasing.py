@@ -23,3 +23,6 @@ class document(db.Model):
     db.Column('path', db.String(200))
     db.Column('name', db.String(64))
 
+class duo(db.Model): #This is a db entry for pairs of question and answers in a highlighted document
+    db.Column('question', db.String(400))
+    db.Column('answer', db.String(400))
