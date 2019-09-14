@@ -14,6 +14,9 @@ def return_quest(text):
             for j in range(0, current_index):
                 if words[j].count(".") > 0:
                     past_index = j
+                break
+        break
+            
     quest_sent = words[i:j]
     quest_str = ""
     for word in quest_sent:
@@ -33,9 +36,12 @@ def return_statement(text: str, question: str):
             for j in range(0, i):
                 if words[j].count('.') > 0:
                     start_index = j
+                break
             for j in range (i, len(words)):
                 if words[j].count('.') > 0:
                     end_index = j
+                break
+        break
     statement_sentance = words[start_index:end_index]
     statement = ""
     for word in statement_sentance:
