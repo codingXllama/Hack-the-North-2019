@@ -64,7 +64,7 @@ form input[type=text], select {
     outline: none;
   }
 
-form button{
+  form input[type=submit], select {
     width: 8rem;
     padding: 0.5rem 0;
     font-size: 1.25rem;
@@ -75,7 +75,9 @@ form button{
     border-radius: 0.5rem;
     color: var(--light_blue_1);
     cursor: pointer;
-}
+    outline: none;
+  }
+
 
 form label{
     margin-bottom: -2.5rem;
