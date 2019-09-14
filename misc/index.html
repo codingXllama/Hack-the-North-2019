@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+
+<title>Page Title</title>
+</head>
+<body>
+    
+<div id = "toolbar"> </div>
+<h2>Input your Info!</h2>
+<div id="editor" onclick=downClickEditor()> </div>
+<h2><br>This is your Header</h2>
+<div id="header" onclick=downClick()> </div>
+<h2><br>This is your Content</h2>
+<div id="content"> </div>
+<button id = "btnSave">Save</button>
+<div></div>
+<form method="POST" action="" name = "form">
+<input type = "file" name = 'file' id = 'real-file'/><br>
+<input type="submit" value="Submit"/>
+</form>
+
+<script>
+    
+    function addReadText(){
+        var client = new XMLHttpRequest();
+        client.open('GET', '/sample_text.txt');
+        client.onreadystatechange = function() {
+            alert(client.responseText);
+        }
+        client.send();
+    }
+    window.onload = function() {
+        document.form.action = addReadText();
+    }
+    var content = "";
+    var quill1Current = "";
+    var quillContent = "";
+    $('#btnSave').click(function(){
+        window.deltaHeader = editorHeader.getContents();
+        window.deltaContent = editorContent.getContents();
+        console.log(deltaHeader);
+        console.log(deltaContent);
+    });
+    function downClickEditor(){
+        var range = editorInput.getSelection();
+        if (window.event.shiftKey){
+            var selectedContent = editorInput.getSelection();
+            if (selectedContent) {
+            if (selectedContent.length == 0) {
+                console.log('User cursor is at index', selectedContent.index);
+            } else {
+                var strContent = editorInput.getText(selectedContent.index, selectedContent.length);
+                console.log('User has highlighted: ', strContent);
+                
+                editorInput.formatText(selectedContent.index, selectedContent.length, {                   // unbolds 'hello' and set its color to blue
+                    'bold': true,
+                    'underline': true
+                });
+                
+                quillContent += strContent;
+                
+                editorContent.setContents([
+                    {insert: quillContent}
+                ]);
+            }
+            } else {
+            console.log('User cursor is not in editor');
+            }
+        } else if (window.event.ctrlKey) {
+            var text = editorInput.getText(range.index, range.length);
+                console.log('User has highlighted: ', text);
+                
+                editorInput.formatText(range.index, range.length, {                   // unbolds 'hello' and set its color to blue
+                    'bold': true,
+                    'underline': true
+                });
+                
+                quill1Current += text;
+                
+                editorHeader.setContents([
+                    {insert: quill1Current}
+                ]);
+        }
+    }
+    
+    function downClick(){
+        
+        if (window.event.shiftKey){
+        } else {
+        
+            var range = editorInput.getSelection();
+            if (range) {
+            if (range.length == 0) {
+                console.log('User cursor is at index', range.index);
+            } else {
+                var text = editorInput.getText(range.index, range.length);
+                console.log('User has highlighted: ', text);
+                
+                editorInput.formatText(range.index, range.length, {                   // unbolds 'hello' and set its color to blue
+                    'bold': true,
+                    'underline': true
+                });
+                
+                editorInput += text;
+                
+                editorHeader.setContents([
+                    {insert: quill1Current}
+                ]);
+            }
+            } else {
+            console.log('User cursor is not in editor');
+            }
+        }
+    }
+    var toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike']
+    ];
+    var reset = "";
+    
+    var editorInput = new Quill('#editor', {
+        modules:{
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+    var editorHeader = new Quill('#header', {
+        modules:{
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+    var editorContent = new Quill('#content', {
+        modules:{
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+</script>
+
+    <div>
+        <p id="outputText">Output is: </p>
+
+    </div>
+
+</body>
+</html>
