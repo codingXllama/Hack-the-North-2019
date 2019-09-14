@@ -1,7 +1,7 @@
 # Insert Run Command Here
 
 from ezLearn.app import app
-from ezLearn.app.databasing import db
+from ezLearn.app.models import db
 
 # Insert code here for the online SQL database
 
