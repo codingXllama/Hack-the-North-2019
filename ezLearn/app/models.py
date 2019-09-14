@@ -8,6 +8,7 @@ db = SQLAlchemy(app)
 
 class account(db.Model):
     username = db.Column(db.String(48), unique=True)
+    full_name = db.Column(db.String(128))
     password = db.Column(db.String(64))
     account_id = db.Column(db.String(24))
     # Maybe add names and more personal stuff later
