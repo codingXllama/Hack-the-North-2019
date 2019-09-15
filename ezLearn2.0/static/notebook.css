@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+
+* {box-sizing:border-box}
+
+:root {
+    --light_blue_1: #38aecc;
+    --dark_blue: #0090c1;
+    --grey: #183446;
+    --white: #fff;
+    --nav_size: 20vw;
+}
+
+.item-focused{
+    background: var(--light_blue_1);
+    color: #fff;
+}
+
+.main{
+    padding: 0;
+    margin: 0;
+    margin-left: 20vw;
+    width: 80vw;
+}
+
+.nav_options_wrap{
+    background: var(--grey);
+    top: 0;
+    margin:0;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+}
+
+.nav_options_wrap li{
+    cursor: pointer;
+    padding: 0.25rem 1rem;
+    background: transparent;
+    border-radius: 0.75rem;
+    border: 3px solid var(--light_blue_1);
+    color: var(--light_blue_1);
+    transition: .25s ease-in-out;
+    font-size: 1.5rem;
+}
+
+section{
+    margin: 0 3rem;
+    display: none;
+}
+
+#flashcards {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+}
+
+.flashcard{
+    background: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.flashcard-question{
+    font-weight: 300;
+}
+
+.flashcard-answer{
+    font-weight: 300;
+    display: none;
+    margin-top: 0.5rem;
+    text-align: center;
+    color: rgb(21, 173, 21);
+}
+
+
+.active{
+    display: block;
+}
+
+
+form input[type=submit], select {
+    width: 8rem;
+    padding: 0.5rem 0;
+    font-size: 1.25rem;
+    margin: 0 auto;
+    background: var(--light_blue_1);
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+#test{
+    margin-top: 2rem;
+}
+
+.question{
+    font-weight: 600;
+}
+.answers {
+  margin-bottom: 20px;
+}
+.answers label{
+  display: block;
+}
+
+#submit_wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+#submit{
+    font-family: sans-serif;
+    font-size: 20px;
+    background-color: var(--light_blue_1);
+    color: #fff;
+    border: 0px;
+    border-radius: 0.5rem;
+    padding: 20px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+#submit:hover{
+    background-color: var(--dark_blue);
+}
