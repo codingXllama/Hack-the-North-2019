@@ -1,5 +1,0 @@
-# This is a text file to show the dependencies that are involved with your script. This is helpful for deployement into a lot of browsers.
-
-#e.g
-
-flask=3.2.0.1 (Name of dependency and version)
