@@ -1,0 +1,38 @@
+{% extends "notebook_base.html" %}
+{% block test %}
+<section id="test">
+        <ol id="quiz" type="1">
+            {% for question in questions %}
+            <li class="question_container">
+                <div class="question_text">{{ question[1] }}</div>
+                <div class="answer_options">
+                    <div class="answer_option">
+                        <input type="radio" name="radio" value="{{ question[0][0] }}">
+                        <label class="answer_option_container">{{ question[0][0] }}
+                        </label>
+                    </div>
+                    <div class="answer_option">
+                        <input type="radio" name="radio" value="{{ question[0][1] }}">
+                        <label class="answer_option_container">{{ question[0][1] }}
+                        </label>
+                    </div>
+                    <div class="answer_option">
+                        <input type="radio" name="radio" value="{{ question[0][2] }}">
+                        <label class="answer_option_container">{{ question[0][2] }}
+                        </label>
+                    </div>
+                    <div class="answer_option">
+                        <input type="radio" name="radio" value="{{ question[0][3] }}">
+                        <label class="answer_option_container">{{ question[0][3] }}
+                        </label>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ol>
+        <div id="submit_wrapper">
+            <button id="submit">Submit Quiz</button>
+        </div>
+        <div id="results"></div>
+</section>
+{% endblock %}

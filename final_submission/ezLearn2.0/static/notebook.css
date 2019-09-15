@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+
+* {box-sizing:border-box}
+
+:root {
+    --light_blue_1: #38aecc;
+    --dark_blue: #0090c1;
+    --grey: #183446;
+    --white: #fff;
+    --nav_size: 20vw;
+}
+
+.item-focused{
+    background: var(--light_blue_1);
+    color: #fff;
+}
+
+.main{
+    padding: 0;
+    margin: 0;
+    margin-left: 20vw;
+    width: 80vw;
+}
+
+.nav_options_wrap{
+    background: var(--grey);
+    top: 0;
+    margin:0;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+}
+
+.nav_options_wrap li{
+    cursor: pointer;
+    padding: 0.25rem 1rem;
+    background: transparent;
+    border-radius: 0.75rem;
+    border: 3px solid var(--light_blue_1);
+    color: var(--light_blue_1);
+    transition: .25s ease-in-out;
+    font-size: 2rem;
+}
+
+.notebook_title{
+    border: none;
+    border-bottom: 3px solid var(--dark_blue);
+    outline: none;
+    margin: 1rem 0 2rem 0;
+    background: none;
+}
+
+.panel-default > .panel-heading{
+    background-color: var(--light_blue_1) !important;
+}
+
+input.next_section{
+    font-family: sans-serif;
+    font-size: 20px;
+    background-color: var(--light_blue_1);
+    color: #fff;
+    border: 0px;
+    border-radius: 0.75rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+section{
+    margin: 0 3rem;
+    display: none;
+}
+
+#learn h2{
+    margin: 1rem 0 0 0;
+}
+
+#key-topics{
+    margin: 0;
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-column-gap: 10%;
+}
+
+#key-topics li{
+    display: block;
+    list-style-type: circle;
+    font-size: 1.75rem;
+}
+
+#key-topics li::before {
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: var(--light_blue_1); /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+  }
+
+#flashcards {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+}
+
+.flashcard{
+    background: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.flashcard-question{
+    font-weight: 300;
+}
+
+.flashcard-answer{
+    font-weight: 300;
+    display: none;
+    margin-top: 0.5rem;
+    text-align: center;
+    color: rgb(21, 173, 21);
+}
+
+
+.active{
+    display: block;
+}
+
+
+form input[type=submit]{
+    padding: 0;
+    font-size: 1.5rem;
+    margin: 0 auto;
+    background: var(--light_blue_1);
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    padding: 1rem 2rem;
+}
+
+#test{
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+#quiz li{
+    list-style: decimal;
+    display: block;
+}
+
+.answer_options input{
+    
+}
+
+.question{
+    font-weight: 600;
+}
+.answers {
+  margin-bottom: 20px;
+}
+.answers label{
+  display: block;
+}
+
+#submit_wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+#submit{
+    font-family: sans-serif;
+    font-size: 20px;
+    background-color: var(--light_blue_1);
+    color: #fff;
+    border: 0px;
+    border-radius: 0.75rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 1rem auto 4rem auto;
+}
+
+#submit:hover{
+    background-color: var(--dark_blue);
+}

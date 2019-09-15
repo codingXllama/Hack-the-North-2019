@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+
+:root {
+    --light_blue_1: #38aecc;
+    --dark_blue: #0090c1;
+    --grey: #183446;
+    --white: #fff;
+    --nav_size: 20vw;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+    background: #F9F2F2;
+}
+
+
+#sidenav {
+    height: 100%;
+    width: var(--nav_size);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: var(--light_blue_1);
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+#sidenav a {
+    padding: 0.5rem 2rem;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgba(255, 255, 255);
+    opacity: 0.5;
+    display: block;
+    transition: .25s linear;
+  }
+  
+#sidenav a:hover {
+  opacity: 1;
+  }
+  
+  
+.main {
+    margin-left: var(--nav_size); 
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+  
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+ul#nav-links{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li{
+     display: inline-block;
+     margin: 1rem 0;
+ }
+
+li a i{
+  margin-right: 1rem;
+}
+
+/*search */
+
+.search_wrap{
+  width: 100%;
+}
+
+.search {
+    border-radius: 10px;
+    outline: none;
+    color: rgb(41, 46, 40);
+    opacity: 0.65;
+    display: grid;
+    grid-template-columns: 100% 0%;
+    margin: 2rem 2.5%;
+    height: 2.5rem;
+    border-radius: 10px;
+}
+
+input[type=text]{
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  border: 3px solid #183446;
+  background: transparent;
+  opacity: 0.75;
+  font-size: 1rem;
+  padding: 12px 20px;
+}
+
+input[type=text]:hover{
+  opacity: 1;
+}
+
+.searchButton{
+  margin-left: -4rem;
+  border-radius: 0 0.5rem 0.5rem 0 ;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #183446;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 100;
+}
+
+
+#notebooks_wrapper{
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+  grid-column-gap: 5%;
+  grid-row-gap: 2rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.notebook{
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  max-height: 300px;
+  cursor: pointer;
+}
+
+.notebook .body  .note-title{
+  margin: 0.5rem 1rem 0 1rem;
+}
+
+.notebook .body  .note-description{
+  margin: 0.25rem 1rem;
+  font-size: 1rem;
+}
+
+.notebook .note-divider{
+  border: 2px solid var(--light_blue_1);
+}
+
+
+.options{
+  display: flex;
+  margin: 0 1rem 0.5rem 1rem;
+  justify-content: space-between;
+}
+
+.amount-option{
+  font-weight: 1000;
+  cursor: pointer;
+}
+
+.share-option{
+  color: var(--light_blue_1);
+  cursor: pointer;
+  opacity: 0;
+  transition: .25s linear;
+}
+
+.remove-option{
+  color: red;
+  cursor: pointer;
+  opacity: 0;
+  transition: .25s linear;
+}
+
+.notebook:hover .remove-option{
+  opacity: 1;
+}
+
+.notebook:hover .share-option{
+  opacity: 1;
+}
+
+#new_notebook{
+  padding: 0.5rem 1rem;
+  text-align: center;
+  display: grid;
+  align-items: center;
+}
+
+.graphic img{
+  width: 40%;
+  margin: 0 auto;
+}
+
+.notebook:first-child .note-title{
+  margin: 0;
+  padding: 0;
+}
+
+.notebook:hover{
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+
+a{
+  text-decoration: none;
+  color: var(--grey);
+}
+
+/* New Note */
+
+#new_note_wrapper{
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 20vw;
+  width: 80vw;
+  height: 100vh;
+  display: grid;
+  align-items: center
+}
+
+.inner_wrapper{
+  margin: 0 2rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.new_notebook_options{
+  padding: 0.5rem 1rem;
+  text-align: center;
+  display: grid;
+  align-items: center;
+  width: 25%;
+  height: 250px;
+
+}
+
+.new_notebook_options .note-title{
+  margin: 0;
+  padding: 0;
+}
+
+.duo-graphic img{
+  width: 75px;
+}
+
+.in_wrap{
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 20vw;
+  width: 80vw;
+}
+    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <title>ezLearn</title>
+</head>
+
+<body>
+
+    <nav id="sidenav">
+        <h1 class="logo"><a href="{{ url_for('index') }}">ezLearn</a></h1>
+        <ul id="nav-links">
+            <li class="nav-link"><a href="#services" id="NotesButton"><i class="fas fa-book-open"></i>My Notes</a>
+            </li>
+            <li class="nav-link"><a href="#services" id="SharedButton"><i class="fas fa-users"></i>Shared</a></li>
+            <li class="nav-link"><a href="#services" id="SettingsButton"><i class="fas fa-cog"></i>Settings</a></li>
+            <li class="nav-link"><a href="#services" id="AccountButton"><i class="fas fa-user-circle"></i>Account</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="main">
+        <div class="in_wrap">
+            <div class="search_wrap">
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="Search notes and quizes">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="notebooks_wrapper">
+                <div class="notebook" id="new_notebook">
+                    <a class="notebook_wraps" href="{{ url_for('write', account_id = account_id) }}">
+                        <div class="graphic">
+                            <img src="../static/new_note.svg" alt="">
+                        </div>
+                        <h3 class="note-title">
+                            New Note
+                        </h3>
+                    </a>
+                </div>
+                
+                {% for duo in duos %}
+                {% if duo.question|count != 0 %}
+                <div class="notebook">
+                    <div class="body">
+                        <h3 class="note-title">
+                            {{ duo.title }}
+                        </h3>
+                        <p class="note-description"> {{ duo.question }}</p>
+                    </div>
+                    <hr class="note-divider">
+                    <div class="options">
+                    <div class="share-option"><i class="fas fa-share-alt"></i></div>
+                    <div class="remove-option"><i class="far fa-trash-alt"></i></div>
+                    </div>
+                </div>
+                {% else %}
+                {% endif %}
+                {% endfor %}
+                
+                {% for note in notes %}
+                <div class="notebook">
+                        <div class="body">
+                            <h3 class="note-title">
+                                {{ note.title }}
+                            </h3>
+                            <p class="note-description"> {{ note.content }}</p>
+                        </div>
+                        <hr class="note-divider">
+                        <div class="options">
+                                <div class="share-option"><i class="fas fa-share-alt"></i></div>
+                                <div class="remove-option"><i class="far fa-trash-alt"></i></div>
+                            </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+var NotesButton = document.getElementById('NotesButton');
+var SharedButton = document.getElementById('SharedButton');
+var SettingsButton = document.getElementById('SettingsButton');
+var AccountButton = document.getElementById('AccountButton');
+
+NotesButton.style.opacity = '1';
+
+NotesButton.addEventListener('click', function () {
+    NotesButton.style.opacity = '1';
+    SharedButton.style.opacity = '0.5';
+    SettingsButton.style.opacity = '0.5';
+    AccountButton.style.opacity = '0.5';
+})
+
+SharedButton.addEventListener('click', function () {
+    NotesButton.style.opacity = '0.5';
+    SharedButton.style.opacity = '1';
+    SettingsButton.style.opacity = '0.5';
+    AccountButton.style.opacity = '0.5';
+})
+
+SettingsButton.addEventListener('click', function () {
+    NotesButton.style.opacity = '0.5';
+    SharedButton.style.opacity = '0.5';
+    SettingsButton.style.opacity = '1';
+    AccountButton.style.opacity = '0.5';
+})
+
+AccountButton.addEventListener('click', function () {
+    NotesButton.style.opacity = '0.5';
+    SharedButton.style.opacity = '0.5';
+    SettingsButton.style.opacity = '0.5';
+    AccountButton.style.opacity = '1';
+})
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+{% extends "notebook_base.html" %}
+{% block body %}
+<link rel="stylesheet" href="../../static/dashboard.css">
+<link rel="stylesheet" href="../../static/notebook.css">
+<section id="notes">
+        <form action="{{ request.path }}" method="POST">
+            <input id="text" class="notebook_title" name="title" placeholder="Notebook Title">
+            <textarea id="summernote" name="content"></textarea>
+            <input type="Submit" value="Add Content" class="next_section">
+        </form>
+</section>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "notebook_base.html" %}
+{% block learn %}
+<section id="learn">
+        <h2>Key Topics:</h2>
+        <ul id="key-topics">
+            {% for message in important_messages %}
+            <li class="topic">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        <h2>Flashcards:</h2>
+        <ul id="flashcards">
+            {% for duo in duos %}
+            {% if duo.question|count != 0 %}
+            <li class="flashcard">
+                <div class="flashcard-option flashcard-question">{{ duo.question }}</div>
+                <div class="flashcard-option  flashcard-answer">{{ duo.answer }}</div>
+            </li>
+            {% else %}
+            {% endif %}
+            {% endfor %}
+        </ul>
+</section>
+{% endblock %}
