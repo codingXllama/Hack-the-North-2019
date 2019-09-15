@@ -5,15 +5,19 @@
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link rel="stylesheet" href="../static/dashboard.css">
-    <link rel="stylesheet" href="../static/notebook.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+    <link rel="stylesheet" href="../static/dashboard.css">
+    <link rel="stylesheet" href="../static/notebook.css">
 
     <title>EzLearn | Make your own Flash Cards!</title>
 </head>
@@ -37,20 +41,11 @@
         </ul>
 
         <section id="notes">
-            <div id="toolbar">
-                <h2 id="inputText">Load or Type your Info!</h2>
-                <div id="editor" onclick=downClickEditor()> </div>
-                <h2 id="headerText"><br>Enter your Header (Highlight Text + Shift)</h2>
-                <div id="header" onclick=downClick()> </div>
-                <h2 id="contentText"><br>Fill in your Content (Highlight Text + Ctrl)</h2>
-                <div id="content"> </div>
-                <button id="btnSave">Save</button> <br>
-                <div></div>
-                <form method="POST" action="" name="form">
-                    <input type="file" name='file' id='real-file' /><br>
-                    <input type="submit" value="Submit" />
-                </form>
-            </div>
+            <input id="text" class="notebook_title" name="title" placeholder="Notebook Title">
+            <form action="{{ request.path }}" method="POST">
+                <textarea id="summernote" name="content"></textarea>
+                <input type="Submit" value="Add Content" class="next_section">
+            </form>
         </section>
 
         <section id="learn">
@@ -79,8 +74,138 @@
         </section>
 
         <section id="test">
-
-            <div id="quiz"></div>
+            <ol id="quiz" type="1">
+                <li class="question_container">
+                    <div class="question_text">Hello</div>
+                    <div class="answer_text">Bye</div>
+                    <div class="answer_options">
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">One
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Two
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Three
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Four
+                            </label>
+                        </div>
+                    </div>
+                </li>
+                <li class="question_container">
+                    <div class="question_text">Hello</div>
+                    <div class="answer_text">Bye</div>
+                    <div class="answer_options">
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">One
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Two
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Three
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Four
+                            </label>
+                        </div>
+                    </div>
+                </li>
+                <li class="question_container">
+                    <div class="question_text">Hello</div>
+                    <div class="answer_text">Bye</div>
+                    <div class="answer_options">
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">One
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Two
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Three
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Four
+                            </label>
+                        </div>
+                    </div>
+                </li>
+                <li class="question_container">
+                    <div class="question_text">Hello</div>
+                    <div class="answer_text">Bye</div>
+                    <div class="answer_options">
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">One
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Two
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Three
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Four
+                            </label>
+                        </div>
+                    </div>
+                </li>
+                <li class="question_container">
+                    <div class="question_text">Hello</div>
+                    <div class="answer_text">Bye</div>
+                    <div class="answer_options">
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">One
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Two
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Three
+                            </label>
+                        </div>
+                        <div class="answer_option">
+                            <input type="radio" name="radio">
+                            <label class="answer_option_container">Four
+                            </label>
+                        </div>
+                    </div>
+                </li>
+            </ol>
             <div id="submit_wrapper">
                 <button id="submit">Submit Quiz</button>
             </div>
@@ -89,8 +214,13 @@
         </section>
 
         <script src="../static/learn.js"></script>
-        <script src="../static/notebook.js"></script>
 
 </body>
+
+<script>
+    $(document).ready(function () {
+        $('#summernote').summernote();
+    });
+</script>
 
 </html>
